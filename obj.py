@@ -18,3 +18,8 @@ class obj:
         return self.x
     def getY(self):
         return self.Y
+
+    def setX(self, var):
+        self.x = var
+    def setY(self, var):
+        self.Y = var

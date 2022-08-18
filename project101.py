@@ -1,6 +1,8 @@
 import matplotlib.pyplot as plt
 from Stick_man import *
 from Tier_1 import *
+from Environment import Environment
+from time import *
 
 def test_0(*args,**kwargs):
     x = A(X=25, Y=25, Size=10)
@@ -106,8 +108,28 @@ def test_3(*args,**kwargs):
     # for i in a:
     #     i.join()
 
+def test_4(*args,**kwargs):
+    colors = ["black", "red", "blue", "yellow", "green", "gray", "orange"]
+    objects = []
+    for _ in range(2):
+        x_rnd = randint(5, 45)
+        y_rnd = randint(5, 45)
+        stickMan = Stick_man(X=x_rnd, Y=y_rnd,colors=colors)
+        tier_1_obj = Tier_1(X=y_rnd, Y=x_rnd, Size=x_rnd+y_rnd/2,colors=colors)
+        objects.append(stickMan)
+        objects.append(tier_1_obj)
+
+    x = Tier_1(X=10,Y=20,Size=30)
+    objects.append(x)
+
+    win = GraphWin("stickman",500,500)
+
+    a = Environment(pixel_objects=objects,window=win,option=1)
+    a.window.getMouse()
+    a.close()
 if __name__ == "__main__":
     #test_0()
     #test_1()
-    test_2()
+    #test_2()
     #test_3()
+    test_4()

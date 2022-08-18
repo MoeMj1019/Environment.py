@@ -5,10 +5,12 @@ import time
 from obj import *
 
 class Tier_1(obj):
-    def __init__(self, X=0, Y=0, ID=0 , Size = 3, Body = [],C_Body=[]):
+    def __init__(self, X=0, Y=0, ID=0 , Size = 3, Body = [],C_Body=[] , colors = ["black"]):
         super().__init__(X=X, Y=Y, ID=ID)
         self.size = Size
         self.c_body = C_Body
+
+        self.colors = colors
 
         def bd(Size):
             body = [(self.x,self.y)]
@@ -51,27 +53,27 @@ class Tier_1(obj):
         self.body = b
         return rnd
 
-    def draw(self, window , dis = 10 , radius=5 , colors = ["black","blue","red"]):
-        self.c_body = []
-        rnd_color = choice(colors)
-        for x,y in self.body:
-            c = Circle(Point(x*dis,y*dis),radius)
-            c.setFill(rnd_color)
-            self.c_body.append(c)
-        for circ in self.c_body:
-            circ.draw(window)
-
-    def move_circ(self,dis = 10 , count = 0, sleep = 0):
-        counter = 0
-        while True:
-            rnd = self.move_randome()
-            for circ in self.c_body :
-                circ.move(rnd[0]*dis,rnd[1]*dis)
-                time.sleep(sleep)
-            if count == 0:
-                counter -= 1
-            else:
-                counter += 1
-            if counter > count:
-                break
+    # def draw(self, window , dis = 10 , radius=5 , colors = ["black","blue","red"]):
+    #     self.c_body = []
+    #     rnd_color = choice(colors)
+    #     for x,y in self.body:
+    #         c = Circle(Point(x*dis,y*dis),radius)
+    #         c.setFill(rnd_color)
+    #         self.c_body.append(c)
+    #     for circ in self.c_body:
+    #         circ.draw(window)
+    #
+    # def move_circ(self,dis = 10 , count = 0, sleep = 0):
+    #     counter = 0
+    #     while True:
+    #         rnd = self.move_randome()
+    #         for circ in self.c_body :
+    #             circ.move(rnd[0]*dis,rnd[1]*dis)
+    #             time.sleep(sleep)
+    #         if count == 0:
+    #             counter -= 1
+    #         else:
+    #             counter += 1
+    #         if counter > count:
+    #             break
         #win.close()
